@@ -1,5 +1,5 @@
 // ============================================================
-// GovSetu Platform — Core Type Definitions
+// GovSetu Platform â€” Core Type Definitions
 // ============================================================
 
 export type UserRole = "government" | "startup" | "evaluator" | "admin";
@@ -21,7 +21,7 @@ export type ProposalStatus = "draft" | "submitted" | "under_review" | "evaluated
 
 export type WaiverType = "prior_experience" | "turnover" | "none";
 
-// ── Challenge ────────────────────────────────────────────────
+// â”€â”€ Challenge â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export interface Challenge {
   id: string;
@@ -43,7 +43,7 @@ export interface Challenge {
   aiSuggestions?: string[];
 }
 
-// ── Startup ──────────────────────────────────────────────────
+// â”€â”€ Startup â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export interface Startup {
   id: string;
@@ -51,7 +51,7 @@ export interface Startup {
   dpiitNumber: string;
   foundedYear: number;
   domains: string[];
-  trlLevel: number; // 1–9
+  trlLevel: number; // 1â€“9
   teamSize: number;
   annualTurnover: number; // INR Lakhs
   hasGovernmentExperience: boolean;
@@ -63,7 +63,7 @@ export interface Startup {
   createdAt: string;
 }
 
-// ── Proposal ─────────────────────────────────────────────────
+// â”€â”€ Proposal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export interface Proposal {
   id: string;
@@ -89,17 +89,17 @@ export interface MatchFactor {
   explanation: string;
 }
 
-// ── Evaluation ───────────────────────────────────────────────
+// â”€â”€ Evaluation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export interface Evaluation {
   id: string;
   proposalId: string;
   evaluatorId: string;
   challengeId: string;
-  technicalFeasibility: number; // 0–40
-  cybersecurityDataIsolation: number; // 0–30
-  costRealism: number; // 0–30
-  totalScore: number; // 0–100
+  technicalFeasibility: number; // 0â€“40
+  cybersecurityDataIsolation: number; // 0â€“30
+  costRealism: number; // 0â€“30
+  totalScore: number; // 0â€“100
   comments: string;
   status: EvaluationStatus;
   qualifiedForSandbox: boolean;
@@ -107,7 +107,7 @@ export interface Evaluation {
   createdAt: string;
 }
 
-// ── Pilot ────────────────────────────────────────────────────
+// â”€â”€ Pilot â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export interface PilotMilestone {
   id: string;
@@ -140,13 +140,13 @@ export interface Pilot {
   totalBudget: number;
   disbursedAmount: number;
   milestones: PilotMilestone[];
-  overallProgress: number; // 0–100
+  overallProgress: number; // 0â€“100
   status: "active" | "completed" | "paused";
   sandboxEnvironment: string;
   createdAt: string;
 }
 
-// ── Procurement ──────────────────────────────────────────────
+// â”€â”€ Procurement â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export interface ProcurementItem {
   id: string;
@@ -157,7 +157,7 @@ export interface ProcurementItem {
   solutionTitle: string;
   department: string;
   domains: string[];
-  pilotSuccessScore: number; // 0–100
+  pilotSuccessScore: number; // 0â€“100
   kpiAchievement: number; // percentage
   procurementValue: number; // INR
   replicableFor: string[]; // list of departments
@@ -166,7 +166,7 @@ export interface ProcurementItem {
   tags: string[];
 }
 
-// ── Changelog ────────────────────────────────────────────────
+// â”€â”€ Changelog â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export interface ChangelogEntry {
   id: string;
@@ -180,7 +180,7 @@ export interface ChangelogEntry {
   metadata?: Record<string, unknown>;
 }
 
-// ── Store State ───────────────────────────────────────────────
+// â”€â”€ Store State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export interface AppState {
   currentRole: UserRole;
@@ -193,7 +193,7 @@ export interface AppState {
   changelog: ChangelogEntry[];
 }
 
-// ── Form Types ────────────────────────────────────────────────
+// â”€â”€ Form Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export interface ChallengeFormData {
   title: string;

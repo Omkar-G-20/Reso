@@ -1,46 +1,46 @@
-# GovSetu — Architecture Document
+# GovSetu â€” Architecture Document
 
 ## System Architecture
 
 ```
-┌─────────────────────────────────────────────────────┐
-│                    CLIENT LAYER                      │
-│  Next.js 14 App Router (React 18 + TypeScript)      │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────┐ │
-│  │ Gov Port │ │Startup   │ │Evaluator │ │ Repo   │ │
-│  │ /gov     │ │/startup  │ │/evaluator│ │/repos  │ │
-│  └──────────┘ └──────────┘ └──────────┘ └────────┘ │
-│                                                      │
-│  ┌──────────────────────────────────────────────┐   │
-│  │         React Context + localStorage Store   │   │
-│  │  Challenges | Startups | Proposals |          │   │
-│  │  Evaluations | Pilots | Procurement | Logs    │   │
-│  └──────────────────────────────────────────────┘   │
-└──────────────────────────┬──────────────────────────┘
-                           │ HTTP/REST
-┌──────────────────────────▼──────────────────────────┐
-│                   API LAYER                          │
-│  Next.js API Routes (/api/v1/*)                     │
-│  GET/POST /challenges  GET/POST /evaluations        │
-│  GET       /startups   GET       /pilots            │
-│  GET       /procurement                             │
-└─────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                    CLIENT LAYER                      â”‚
+â”‚  Next.js 14 App Router (React 18 + TypeScript)      â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â” â”‚
+â”‚  â”‚ Gov Port â”‚ â”‚Startup   â”‚ â”‚Evaluator â”‚ â”‚ Repo   â”‚ â”‚
+â”‚  â”‚ /gov     â”‚ â”‚/startup  â”‚ â”‚/evaluatorâ”‚ â”‚/repos  â”‚ â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â”‚
+â”‚                                                      â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â”‚
+â”‚  â”‚         React Context + localStorage Store   â”‚   â”‚
+â”‚  â”‚  Challenges | Startups | Proposals |          â”‚   â”‚
+â”‚  â”‚  Evaluations | Pilots | Procurement | Logs    â”‚   â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                           â”‚ HTTP/REST
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â–¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                   API LAYER                          â”‚
+â”‚  Next.js API Routes (/api/v1/*)                     â”‚
+â”‚  GET/POST /challenges  GET/POST /evaluations        â”‚
+â”‚  GET       /startups   GET       /pilots            â”‚
+â”‚  GET       /procurement                             â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ## Component Architecture
 
 ```
 components/
-├── navbar.tsx          # Role switcher + navigation
-├── challenge-card.tsx  # Challenge listing + AI match score
-├── pilot-tracker.tsx   # Milestone timeline + payment release
-├── evaluation-modal.tsx # Blind scoring modal
-├── challenge-builder.tsx # 5-step government form
-├── dpiit-checker.tsx   # GFR eligibility verification
-├── proposal-modal.tsx  # Startup proposal submission
-├── repository-card.tsx # Certified solution card
-└── ui/
-    └── index.tsx       # Button, Badge, Card, Input, Modal, etc.
+â”œâ”€â”€ navbar.tsx          # Role switcher + navigation
+â”œâ”€â”€ challenge-card.tsx  # Challenge listing + AI match score
+â”œâ”€â”€ pilot-tracker.tsx   # Milestone timeline + payment release
+â”œâ”€â”€ evaluation-modal.tsx # Blind scoring modal
+â”œâ”€â”€ challenge-builder.tsx # 5-step government form
+â”œâ”€â”€ dpiit-checker.tsx   # GFR eligibility verification
+â”œâ”€â”€ proposal-modal.tsx  # Startup proposal submission
+â”œâ”€â”€ repository-card.tsx # Certified solution card
+â””â”€â”€ ui/
+    â””â”€â”€ index.tsx       # Button, Badge, Card, Input, Modal, etc.
 ```
 
 ## State Management
@@ -62,29 +62,29 @@ AppState {
 
 ```
 Government Officer
-    ↓ Creates Challenge (ChallengeBuilder)
-    ↓ AI Assistant checks completeness
-    ↓ Publishes to marketplace
+    â†“ Creates Challenge (ChallengeBuilder)
+    â†“ AI Assistant checks completeness
+    â†“ Publishes to marketplace
     
 Startup
-    ↓ DPIIT Eligibility verified (DPIITChecker)
-    ↓ AI match scores computed (domain overlap + TRL)
-    ↓ Submits proposal (ProposalModal)
+    â†“ DPIIT Eligibility verified (DPIITChecker)
+    â†“ AI match scores computed (domain overlap + TRL)
+    â†“ Submits proposal (ProposalModal)
     
 Evaluator
-    ↓ Sees anonymized proposals (TanStack Table)
-    ↓ Scores on 3 dimensions (EvaluationModal sliders)
-    ↓ Score ≥ 80 → auto-qualifies for Sandbox
+    â†“ Sees anonymized proposals (TanStack Table)
+    â†“ Scores on 3 dimensions (EvaluationModal sliders)
+    â†“ Score â‰¥ 80 â†’ auto-qualifies for Sandbox
     
 Government Officer
-    ↓ Monitors pilot milestones (PilotTracker)
-    ↓ Clicks "Approve & Release Payment"
-    ↓ Tranche disbursed + Changelog updated
+    â†“ Monitors pilot milestones (PilotTracker)
+    â†“ Clicks "Approve & Release Payment"
+    â†“ Tranche disbursed + Changelog updated
     
 System
-    ↓ Pilot completes → Solution certified
-    ↓ Added to Innovation Repository
-    ↓ Available for cross-department procurement
+    â†“ Pilot completes â†’ Solution certified
+    â†“ Added to Innovation Repository
+    â†“ Available for cross-department procurement
 ```
 
 ## Design Patterns
@@ -100,4 +100,4 @@ System
 
 ---
 
-*GovSetu Architecture v1.0 · September 2024*
+*GovSetu Architecture v1.0 Â· September 2024*

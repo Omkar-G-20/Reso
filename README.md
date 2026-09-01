@@ -1,6 +1,6 @@
-# GovSetu Platform — README
+# GovSetu Platform â€” README
 
-## 🏛️ Getting Started
+## ðŸ›ï¸ Getting Started
 
 ### Prerequisites
 - Node.js 18+ 
@@ -24,7 +24,7 @@ Open **http://localhost:3000** in your browser.
 
 ---
 
-## 📌 Platform Portals
+## ðŸ“Œ Platform Portals
 
 | URL | Portal | Role |
 |-----|--------|------|
@@ -46,28 +46,28 @@ Open **http://localhost:3000** in your browser.
 
 ---
 
-## 🎭 Role Switcher
+## ðŸŽ­ Role Switcher
 
 Use the **role switcher** in the top-right navbar to switch between:
-- 🏛️ **Government Officer** — Create challenges, approve payments
-- 🚀 **Startup Founder** — Discover challenges, submit proposals
-- ⚖️ **Evaluator** — Conduct blind evaluations
-- 🛡️ **Admin** — Full access
+- ðŸ›ï¸ **Government Officer** â€” Create challenges, approve payments
+- ðŸš€ **Startup Founder** â€” Discover challenges, submit proposals
+- âš–ï¸ **Evaluator** â€” Conduct blind evaluations
+- ðŸ›¡ï¸ **Admin** â€” Full access
 
 ---
 
-## 🔑 Key Features to Demo
+## ðŸ”‘ Key Features to Demo
 
-1. **Government Portal** → Create a new challenge (5-step AI-assisted builder)
-2. **Startup Hub** → Check DPIIT eligibility, view AI match scores (91%), submit proposal
-3. **Evaluator Portal** → Click "Evaluate" on any pending proposal, use sliders to score
-4. **Pilot Tracker** → Click any active pilot card, then "Approve & Release Payment"
-5. **Repository** → View HealthPredict's certified solution with Radar/Bar charts
-6. **Changelog** → Real-time audit trail of all actions
+1. **Government Portal** â†’ Create a new challenge (5-step AI-assisted builder)
+2. **Startup Hub** â†’ Check DPIIT eligibility, view AI match scores (91%), submit proposal
+3. **Evaluator Portal** â†’ Click "Evaluate" on any pending proposal, use sliders to score
+4. **Pilot Tracker** â†’ Click any active pilot card, then "Approve & Release Payment"
+5. **Repository** â†’ View HealthPredict's certified solution with Radar/Bar charts
+6. **Changelog** â†’ Real-time audit trail of all actions
 
 ---
 
-## 🏗️ Architecture
+## ðŸ—ï¸ Architecture
 
 - **Framework**: Next.js 14 (App Router) + TypeScript
 - **State**: React Context + localStorage persistence
@@ -78,5 +78,5 @@ Use the **role switcher** in the top-right navbar to switch between:
 
 ---
 
-*GovSetu · AI-Enabled Government–Startup Innovation Procurement Platform*
-*Compliant with GFR Rule 161 · CERT-In · DISHA · RTI Act 2005*
+*GovSetu Â· AI-Enabled Governmentâ€“Startup Innovation Procurement Platform*
+*Compliant with GFR Rule 161 Â· CERT-In Â· DISHA Â· RTI Act 2005*

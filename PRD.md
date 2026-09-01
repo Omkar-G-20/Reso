@@ -1,4 +1,4 @@
-# GovSetu — Product Requirements Document
+# GovSetu â€” Product Requirements Document
 
 **Version**: 1.0.0  
 **Date**: September 2024  
@@ -8,13 +8,13 @@
 
 ## 1. Executive Summary
 
-GovSetu is an AI-Enabled Government–Startup Innovation Procurement & Sandbox Platform designed to bridge the gap between government innovation challenges and startup solutions through structured, transparent, and compliant procurement workflows under GFR Rule 161.
+GovSetu is an AI-Enabled Governmentâ€“Startup Innovation Procurement & Sandbox Platform designed to bridge the gap between government innovation challenges and startup solutions through structured, transparent, and compliant procurement workflows under GFR Rule 161.
 
 ## 2. Problem Statement
 
-Indian government departments spend ₹2.5 lakh Cr+ annually on technology procurement, yet:
+Indian government departments spend â‚¹2.5 lakh Cr+ annually on technology procurement, yet:
 - 73% of startup bids are rejected for technical procedural reasons unrelated to merit
-- Average procurement cycle is 18–24 months
+- Average procurement cycle is 18â€“24 months
 - Manual evaluation is prone to bias and lacks standardization
 - Successful pilots rarely get scaled cross-departmentally
 
@@ -37,7 +37,7 @@ GovSetu provides a unified platform with:
 ### 3.3 Evaluator Portal
 - Blind evaluation with mandatory anonymization
 - Standardized 100-point scoring matrix (Technical: 40, Security: 30, Cost: 30)
-- Automatic qualification threshold (≥80 → Sandbox Pilot)
+- Automatic qualification threshold (â‰¥80 â†’ Sandbox Pilot)
 - Audit-grade evaluation records
 
 ### 3.4 Innovation Repository
@@ -53,7 +53,7 @@ GovSetu provides a unified platform with:
 | Data Security | CERT-In Empanelled Audit |
 | Health Data | ABDM / DISHA Standards |
 | Land Records | DILRMP / Bhu-Naksha Integration |
-| RTI Compliance | RTI Act 2005 — Audit Log |
+| RTI Compliance | RTI Act 2005 â€” Audit Log |
 
 ## 5. Non-Functional Requirements
 
@@ -65,4 +65,4 @@ GovSetu provides a unified platform with:
 
 ---
 
-*Ministry Approved · DPIIT · Government of India*
+*Ministry Approved Â· DPIIT Â· Government of India*
