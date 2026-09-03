@@ -29,6 +29,7 @@ const entityConfig = {
   pilot: { icon: <FlaskConical size={14} />, color: "bg-emerald-100 text-gov-success" },
   procurement: { icon: <ShoppingBag size={14} />, color: "bg-pink-100 text-pink-600" },
   system: { icon: <Settings size={14} />, color: "bg-gray-100 text-gov-muted" },
+  user: { icon: <Building2 size={14} />, color: "bg-teal-100 text-teal-600" },
 };
 
 const roleConfig = {

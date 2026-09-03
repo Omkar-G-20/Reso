@@ -14,7 +14,7 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
 
 interface DPIITCheckerProps {
   startup: Startup;
@@ -22,9 +22,9 @@ interface DPIITCheckerProps {
 
 const waiverDescriptions = {
   prior_experience:
-    "Prior Experience Waiver (GFR Rule 161(iv)(a)) â€” Exempted from requiring 3+ years of government project experience. Eligible as a DPIIT-registered startup.",
+    "Prior Experience Waiver (GFR Rule 161(iv)(a)) — Exempted from requiring 3+ years of government project experience. Eligible as a DPIIT-registered startup.",
   turnover:
-    "Turnover Waiver (GFR Rule 161(iv)(b)) â€” Exempted from minimum annual turnover requirements (typically â‚¹1 Cr). Startup's early-stage status recognized.",
+    "Turnover Waiver (GFR Rule 161(iv)(b)) — Exempted from minimum annual turnover requirements (typically ₹1 Cr). Startup's early-stage status recognized.",
   none: "",
 };
 
@@ -36,7 +36,7 @@ export function DPIITChecker({ startup }: DPIITCheckerProps) {
   const runCheck = async () => {
     setChecking(true);
     setChecked(false);
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 1500));
     setResult(startup.eligibilityStatus);
     setChecking(false);
     setChecked(true);
@@ -53,7 +53,7 @@ export function DPIITChecker({ startup }: DPIITCheckerProps) {
           <span className="font-heading font-bold">DPIIT Eligibility Verification</span>
         </div>
         <p className="text-xs text-blue-100">
-          Automated verification under GFR Rule 161 â€” prior experience & turnover waivers
+          Automated verification under GFR Rule 161 — prior experience & turnover waivers
         </p>
       </div>
 
@@ -72,7 +72,7 @@ export function DPIITChecker({ startup }: DPIITCheckerProps) {
               <TrendingUp size={11} />
               Annual Turnover
             </div>
-            <div className="font-bold text-gov-navy">â‚¹{startup.annualTurnover}L</div>
+            <div className="font-bold text-gov-navy">₹{startup.annualTurnover}L</div>
           </div>
           <div className="bg-gray-50 rounded-lg p-3">
             <div className="text-gov-muted mb-0.5 flex items-center gap-1">
@@ -120,8 +120,7 @@ export function DPIITChecker({ startup }: DPIITCheckerProps) {
             ].map((step, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2 text-xs text-gov-muted animate-pulse-slow"
-                style={{ animationDelay: `${i * 0.4}s` }}
+                className="flex items-center gap-2 text-xs text-gov-muted"
               >
                 <Loader2 size={11} className="animate-spin text-gov-blue flex-shrink-0" />
                 {step}
@@ -149,10 +148,10 @@ export function DPIITChecker({ startup }: DPIITCheckerProps) {
               </div>
               <div className="flex-1">
                 <div className={cn("font-semibold text-sm", isVerified ? "text-emerald-700" : "text-red-700")}>
-                  {isVerified ? "âœ“ DPIIT Verified â€” Eligible to Apply" : "âœ— Verification Failed"}
+                  {isVerified ? "✓ DPIIT Verified — Eligible to Apply" : "✗ Verification Failed"}
                 </div>
                 <div className="text-xs text-gov-muted mt-0.5">
-                  {startup.name} Â· {startup.dpiitNumber}
+                  {startup.name} · {startup.dpiitNumber}
                 </div>
               </div>
               <Badge variant={isVerified ? "success" : "danger"}>
@@ -188,8 +187,7 @@ export function DPIITChecker({ startup }: DPIITCheckerProps) {
 
             {!isVerified && (
               <Alert variant="danger" icon={<XCircle size={14} />}>
-                DPIIT registration could not be verified. Please ensure your DPIIT certificate is valid and the
-                registration number is correct.
+                DPIIT registration could not be verified. Please ensure your DPIIT certificate is valid.
               </Alert>
             )}
 

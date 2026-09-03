@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useStore } from "@/lib/store";
 import { ChallengeCard } from "@/components/challenge-card";
 import { PilotTracker } from "@/components/pilot-tracker";
@@ -8,6 +9,7 @@ import { ChallengeBuilder } from "@/components/challenge-builder";
 import { StatCard, SectionTitle, Card, Modal, Badge } from "@/components/ui";
 import { Button } from "@/components/ui";
 import { formatCurrency } from "@/lib/utils";
+import Link from "next/link";
 import {
   Building2,
   Plus,
@@ -16,14 +18,41 @@ import {
   BarChart3,
   ChevronRight,
   FileText,
+  Shield,
 } from "lucide-react";
 
 type Tab = "overview" | "challenges" | "pilots" | "new-challenge";
 
 export default function GovernmentPage() {
+  const router = useRouter();
   const { state } = useStore();
   const [tab, setTab] = useState<Tab>("overview");
   const [selectedPilot, setSelectedPilot] = useState<string | null>(null);
+
+  // Strict RBAC Auto-Redirect: If logged in as startup or evaluator, immediately send to their portal
+  useEffect(() => {
+    if (state.authUser && state.authUser.role !== "government" && state.authUser.role !== "admin") {
+      const target = state.authUser.role === "startup" ? "/startup" : "/evaluator";
+      router.replace(target);
+    }
+  }, [state.authUser, router]);
+
+  // RBAC Guard
+  if (state.authUser && state.authUser.role !== "government" && state.authUser.role !== "admin") {
+    return (
+      <div className="max-w-xl mx-auto py-16 px-4 text-center">
+        <div className="p-8 bg-white rounded-2xl border border-slate-200 shadow-xl space-y-4">
+          <div className="w-16 h-16 rounded-full bg-red-50 border-4 border-red-200 flex items-center justify-center mx-auto text-red-600">
+            <Shield size={32} />
+          </div>
+          <h2 className="font-heading font-bold text-xl text-gov-navy">Redirecting to Your Workspace...</h2>
+          <p className="text-sm text-gov-muted leading-relaxed">
+            Government Portal is restricted to verified Departmental Officials. Redirecting you to your workspace.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   const challenges = state.challenges;
   const pilots = state.pilots;

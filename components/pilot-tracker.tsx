@@ -14,8 +14,10 @@ import {
   Calendar,
   TrendingUp,
   Loader2,
+  Sparkles,
   DollarSign,
 } from "lucide-react";
+import { AIMethodologyExplainer } from "@/components/ai-methodology-explainer";
 import { cn } from "@/lib/utils";
 
 interface PilotTrackerProps {
@@ -49,15 +51,15 @@ function MilestoneCard({ milestone, pilotId, index }: { milestone: PilotMileston
   const { releaseMilestonePayment } = useStore();
   const [releasing, setReleasing] = useState(false);
   const [released, setReleased] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
   const config = milestoneStatusConfig[milestone.status];
 
-  const canRelease =
-    (milestone.status === "completed" || milestone.status === "in_progress") &&
-    milestone.status !== "payment_released";
+  const canRelease = milestone.status === "completed" || milestone.status === "in_progress";
 
   const handleRelease = async () => {
     setReleasing(true);
-    await new Promise((r) => setTimeout(r, 1500));
+    setConfirmOpen(false);
+    await new Promise((r) => setTimeout(r, 1200));
     releaseMilestonePayment(pilotId, milestone.id, milestone.title, milestone.trancheAmount);
     setReleased(true);
     setReleasing(false);
@@ -133,23 +135,45 @@ function MilestoneCard({ milestone, pilotId, index }: { milestone: PilotMileston
 
           {/* Release Payment Button */}
           {canRelease && !released && (
-            <div className="pt-2">
-              <Button
-                variant="success"
-                size="sm"
-                loading={releasing}
-                onClick={handleRelease}
-                className="w-full"
-              >
-                <Banknote size={14} />
-                Approve & Release Payment ({formatCurrency(milestone.trancheAmount)})
-              </Button>
+            <div className="pt-2 space-y-2">
+              {!confirmOpen ? (
+                <Button
+                  variant="success"
+                  size="sm"
+                  loading={releasing}
+                  onClick={() => setConfirmOpen(true)}
+                  className="w-full"
+                >
+                  <Banknote size={14} />
+                  Approve & Release Payment ({formatCurrency(milestone.trancheAmount)})
+                </Button>
+              ) : (
+                <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 space-y-3">
+                  <div className="flex items-start gap-2">
+                    <AlertCircle size={15} className="text-amber-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-xs font-bold text-amber-900">Confirm Payment Release</p>
+                      <p className="text-xs text-amber-700 mt-0.5">
+                        Release <strong>{formatCurrency(milestone.trancheAmount)}</strong> for milestone &quot;{milestone.title}&quot;? This action is irreversible.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="outline" onClick={() => setConfirmOpen(false)} className="flex-1">
+                      Cancel
+                    </Button>
+                    <Button size="sm" variant="success" loading={releasing} onClick={handleRelease} className="flex-1">
+                      <Banknote size={13} /> Yes, Release Payment
+                    </Button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
           {(milestone.status === "payment_released" || released) && (
             <Alert variant="success" icon={<Banknote size={14} />}>
-              <strong>Payment Released!</strong> â‚¹{(milestone.trancheAmount / 100000).toFixed(0)}L tranche disbursed successfully.
+              <strong>Payment Released!</strong> ₹{(milestone.trancheAmount / 100000).toFixed(0)}L tranche disbursed successfully.
             </Alert>
           )}
         </div>
@@ -171,7 +195,7 @@ export function PilotTracker({ pilot }: PilotTrackerProps) {
               </Badge>
               <span className="text-blue-200 text-xs">{pilot.sandboxEnvironment}</span>
             </div>
-            <h3 className="font-heading font-bold text-lg leading-snug">{pilot.challengeTitle}</h3>
+            <h3 className="font-heading font-bold text-lg leading-snug text-white">{pilot.challengeTitle}</h3>
             <div className="flex items-center gap-3 mt-2 text-blue-100 text-xs">
               <span className="flex items-center gap-1">
                 <Building2 size={11} />
@@ -179,7 +203,7 @@ export function PilotTracker({ pilot }: PilotTrackerProps) {
               </span>
               <span className="flex items-center gap-1">
                 <Calendar size={11} />
-                {formatDate(pilot.startDate)} â€“ {formatDate(pilot.endDate)}
+                {formatDate(pilot.startDate)} – {formatDate(pilot.endDate)}
               </span>
             </div>
           </div>
@@ -217,6 +241,17 @@ export function PilotTracker({ pilot }: PilotTrackerProps) {
           </span>
         </div>
       </div>
+
+      {/* AI Methodology & Impact Explainer */}
+      <AIMethodologyExplainer
+        solutionTitle={pilot.challengeTitle}
+        department={pilot.department}
+        cost={pilot.totalBudget}
+        methodology={
+          pilot.milestones[0]?.description ||
+          "Automated cloud and IoT edge deployment for real-time government service delivery and SLA monitoring."
+        }
+      />
 
       {/* Milestones Timeline */}
       <div>

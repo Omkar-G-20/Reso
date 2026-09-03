@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
-// â”€â”€ Button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Button
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "success" | "warning" | "danger" | "outline" | "ghost" | "secondary";
   size?: "sm" | "md" | "lg";
@@ -54,7 +54,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Button";
 
-// â”€â”€ Badge â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Badge
 interface BadgeProps {
   children: React.ReactNode;
   variant?: "default" | "success" | "warning" | "danger" | "secondary" | "outline" | "blue";
@@ -83,19 +83,23 @@ export function Badge({ children, variant = "default", size = "sm", className }:
   );
 }
 
-// â”€â”€ Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Card
 interface CardProps {
   children: React.ReactNode;
   className?: string;
   hover?: boolean;
+  onClick?: () => void;
+  id?: string;
 }
 
-export function Card({ children, className, hover = false }: CardProps) {
+export function Card({ children, className, hover = false, onClick, id }: CardProps) {
   return (
     <div
+      id={id}
+      onClick={onClick}
       className={cn(
         "bg-white rounded-xl border border-gov-border shadow-gov",
-        hover && "hover:shadow-gov-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer",
+        (hover || onClick) && "hover:shadow-gov-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer",
         className
       )}
     >
@@ -116,7 +120,7 @@ export function CardFooter({ children, className }: { children: React.ReactNode;
   return <div className={cn("px-6 py-4 border-t border-gov-border bg-gray-50 rounded-b-xl", className)}>{children}</div>;
 }
 
-// â”€â”€ Input â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Input
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
@@ -151,7 +155,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 );
 Input.displayName = "Input";
 
-// â”€â”€ Textarea â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Textarea
 interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   error?: string;
@@ -186,7 +190,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 );
 Textarea.displayName = "Textarea";
 
-// â”€â”€ Select â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Select
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   error?: string;
@@ -222,7 +226,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 );
 Select.displayName = "Select";
 
-// â”€â”€ Progress Bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Progress Bar
 export function ProgressBar({
   value,
   max = 100,
@@ -261,7 +265,7 @@ export function ProgressBar({
   );
 }
 
-// â”€â”€ Stat Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Stat Card
 export function StatCard({
   label,
   value,
@@ -290,7 +294,7 @@ export function StatCard({
           <p className={cn("font-heading font-bold text-2xl", c.text)}>{value}</p>
           {trend && (
             <p className={cn("text-xs mt-1", trend.value >= 0 ? "text-gov-success" : "text-gov-danger")}>
-              {trend.value >= 0 ? "â†‘" : "â†“"} {Math.abs(trend.value)}% {trend.label}
+              {trend.value >= 0 ? "↑" : "↓"} {Math.abs(trend.value)}% {trend.label}
             </p>
           )}
         </div>
@@ -302,7 +306,7 @@ export function StatCard({
   );
 }
 
-// â”€â”€ Section Title â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Section Title
 export function SectionTitle({
   title,
   subtitle,
@@ -323,15 +327,17 @@ export function SectionTitle({
   );
 }
 
-// â”€â”€ Alert â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Alert
 export function Alert({
   children,
   variant = "info",
   icon,
+  className,
 }: {
   children: React.ReactNode;
   variant?: "info" | "success" | "warning" | "danger";
   icon?: React.ReactNode;
+  className?: string;
 }) {
   const variants = {
     info: "bg-blue-50 border-gov-blue text-gov-blue",
@@ -340,14 +346,14 @@ export function Alert({
     danger: "bg-gov-danger-light border-gov-danger text-red-700",
   };
   return (
-    <div className={cn("flex items-start gap-3 p-4 rounded-lg border-l-4 text-sm", variants[variant])}>
+    <div className={cn("flex items-start gap-3 p-4 rounded-lg border-l-4 text-sm", variants[variant], className)}>
       {icon && <span className="mt-0.5 flex-shrink-0">{icon}</span>}
       <div>{children}</div>
     </div>
   );
 }
 
-// â”€â”€ Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Modal
 export function Modal({
   open,
   onClose,

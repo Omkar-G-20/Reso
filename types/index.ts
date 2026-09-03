@@ -1,5 +1,5 @@
 // ============================================================
-// GovSetu Platform â€” Core Type Definitions
+// GovSetu Platform — Core Type Definitions
 // ============================================================
 
 export type UserRole = "government" | "startup" | "evaluator" | "admin";
@@ -21,8 +21,18 @@ export type ProposalStatus = "draft" | "submitted" | "under_review" | "evaluated
 
 export type WaiverType = "prior_experience" | "turnover" | "none";
 
-// â”€â”€ Challenge â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+export type EvaluationType = "high-tech" | "medium-tech" | "low-tech" | "tech";
 
+// Auth
+export interface AuthUser {
+  id: string;
+  name: string;
+  role: UserRole;
+  orgId: string;
+  loginTime: string;
+}
+
+// Challenge
 export interface Challenge {
   id: string;
   title: string;
@@ -30,7 +40,7 @@ export interface Challenge {
   description: string;
   problemStatement: string;
   budget: number;
-  timeline: string; // e.g. "6 months"
+  timeline: string;
   targetKPIs: string[];
   domains: string[];
   status: ChallengeStatus;
@@ -41,19 +51,31 @@ export interface Challenge {
   createdAt: string;
   updatedAt: string;
   aiSuggestions?: string[];
+  // Extended fields
+  govSector?: "central" | "state" | "local" | "psu";
+  state?: string;
+  problemBackground?: string;
+  desiredOutcome?: string;
+  existingApproach?: string;
+  technicalRequirements?: string;
+  functionalRequirements?: string;
+  constraints?: string;
+  targetBeneficiaries?: string;
+  minPilotDuration?: number;
+  maxPilotDuration?: number;
 }
 
-// â”€â”€ Startup â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
+// Startup
 export interface Startup {
   id: string;
   name: string;
+  displayName?: string;
   dpiitNumber: string;
   foundedYear: number;
   domains: string[];
-  trlLevel: number; // 1â€“9
+  trlLevel: number;
   teamSize: number;
-  annualTurnover: number; // INR Lakhs
+  annualTurnover: number;
   hasGovernmentExperience: boolean;
   description: string;
   contactEmail: string;
@@ -63,13 +85,12 @@ export interface Startup {
   createdAt: string;
 }
 
-// â”€â”€ Proposal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
+// Proposal
 export interface Proposal {
   id: string;
   challengeId: string;
   startupId: string;
-  startupName: string; // anonymized in evaluation view
+  startupName: string;
   trlLevel: number;
   methodology: string;
   sandboxTimeline: string;
@@ -89,33 +110,41 @@ export interface MatchFactor {
   explanation: string;
 }
 
-// â”€â”€ Evaluation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
+// Evaluation — 7-parameter dual-track
 export interface Evaluation {
   id: string;
   proposalId: string;
   evaluatorId: string;
   challengeId: string;
-  technicalFeasibility: number; // 0â€“40
-  cybersecurityDataIsolation: number; // 0â€“30
-  costRealism: number; // 0â€“30
-  totalScore: number; // 0â€“100
+  evaluationType: EvaluationType;
+  // 7 parameters (raw 0–10 score each, weighted to 100 total)
+  kpiAchievement: number;
+  operationalEfficiency: number;
+  scalabilityReplicability: number;
+  costRealismROI: number;
+  innovationNovelty: number;
+  technologyReliability: number;
+  sustainabilityGovernance: number;
+  totalScore: number;
   comments: string;
   status: EvaluationStatus;
   qualifiedForSandbox: boolean;
   evaluatedAt: string;
   createdAt: string;
+  // Legacy fields for backward compat display
+  technicalFeasibility?: number;
+  cybersecurityDataIsolation?: number;
+  costRealism?: number;
 }
 
-// â”€â”€ Pilot â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
+// Pilot
 export interface PilotMilestone {
   id: string;
   title: string;
   description: string;
   dueDate: string;
   completedDate: string | null;
-  trancheAmount: number; // INR
+  trancheAmount: number;
   status: PilotMilestoneStatus;
   kpiMetrics: KPIMetric[];
 }
@@ -140,14 +169,13 @@ export interface Pilot {
   totalBudget: number;
   disbursedAmount: number;
   milestones: PilotMilestone[];
-  overallProgress: number; // 0â€“100
+  overallProgress: number;
   status: "active" | "completed" | "paused";
   sandboxEnvironment: string;
   createdAt: string;
 }
 
-// â”€â”€ Procurement â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
+// Procurement
 export interface ProcurementItem {
   id: string;
   pilotId: string;
@@ -157,33 +185,32 @@ export interface ProcurementItem {
   solutionTitle: string;
   department: string;
   domains: string[];
-  pilotSuccessScore: number; // 0â€“100
-  kpiAchievement: number; // percentage
-  procurementValue: number; // INR
-  replicableFor: string[]; // list of departments
+  pilotSuccessScore: number;
+  kpiAchievement: number;
+  procurementValue: number;
+  replicableFor: string[];
   description: string;
   certifiedAt: string;
   tags: string[];
 }
 
-// â”€â”€ Changelog â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
+// Changelog
 export interface ChangelogEntry {
   id: string;
   timestamp: string;
   actor: string;
   role: UserRole;
   action: string;
-  entityType: "challenge" | "proposal" | "evaluation" | "pilot" | "procurement" | "system";
+  entityType: "challenge" | "proposal" | "evaluation" | "pilot" | "procurement" | "system" | "user";
   entityId: string;
   details: string;
   metadata?: Record<string, unknown>;
 }
 
-// â”€â”€ Store State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
+// Store State
 export interface AppState {
   currentRole: UserRole;
+  authUser: AuthUser | null;
   challenges: Challenge[];
   startups: Startup[];
   proposals: Proposal[];
@@ -193,14 +220,24 @@ export interface AppState {
   changelog: ChangelogEntry[];
 }
 
-// â”€â”€ Form Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
+// Form Types
 export interface ChallengeFormData {
   title: string;
   department: string;
+  govSector: string;
+  state: string;
   description: string;
   problemStatement: string;
+  problemBackground: string;
+  desiredOutcome: string;
+  existingApproach: string;
+  technicalRequirements: string;
+  functionalRequirements: string;
+  constraints: string;
+  targetBeneficiaries: string;
   budget: number;
+  minPilotDuration: number;
+  maxPilotDuration: number;
   timeline: string;
   targetKPIs: string;
   domains: string;
@@ -216,8 +253,13 @@ export interface ProposalFormData {
 }
 
 export interface EvaluationFormData {
-  technicalFeasibility: number;
-  cybersecurityDataIsolation: number;
-  costRealism: number;
+  evaluationType: EvaluationType;
+  kpiAchievement: number;
+  operationalEfficiency: number;
+  scalabilityReplicability: number;
+  costRealismROI: number;
+  innovationNovelty: number;
+  technologyReliability: number;
+  sustainabilityGovernance: number;
   comments: string;
 }

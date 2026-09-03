@@ -8,7 +8,7 @@ import type {
   ChangelogEntry,
 } from "@/types";
 
-// â”€â”€ Seed Challenges â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Seed Challenges
 export const seedChallenges: Challenge[] = [
   {
     id: "ch_001",
@@ -17,11 +17,11 @@ export const seedChallenges: Challenge[] = [
     description:
       "Develop an AI-based system using computer vision and IoT sensors to automatically detect, classify, and geolocate potholes and road surface defects in real-time.",
     problemStatement:
-      "India loses â‚¹10,000 Cr annually due to poor road maintenance. Current manual inspection is slow, inconsistent, and covers less than 30% of national highways annually. We need an automated, scalable solution that can process data from existing CCTV infrastructure.",
+      "India loses ₹10,000 Cr annually due to poor road maintenance. Current manual inspection is slow, inconsistent, and covers less than 30% of national highways annually. We need an automated, scalable solution that can process data from existing CCTV infrastructure.",
     budget: 5_00_00_000,
     timeline: "12 months",
     targetKPIs: [
-      "Detection accuracy â‰¥ 92%",
+      "Detection accuracy ≥ 92%",
       "Coverage of 50,000 km of highways in Phase 1",
       "Response time from detection to maintenance ticket: < 24 hrs",
       "Cost reduction in road maintenance: 30%",
@@ -52,8 +52,8 @@ export const seedChallenges: Challenge[] = [
     timeline: "9 months",
     targetKPIs: [
       "Support 22 scheduled Indian languages",
-      "Grievance triage accuracy â‰¥ 95%",
-      "Auto-resolution rate for Tier-1 queries â‰¥ 40%",
+      "Grievance triage accuracy ≥ 95%",
+      "Auto-resolution rate for Tier-1 queries ≥ 40%",
       "Average resolution time reduction: 60%",
     ],
     domains: ["NLP", "Conversational AI", "Multilingual AI", "Government Tech"],
@@ -76,7 +76,7 @@ export const seedChallenges: Challenge[] = [
     description:
       "Create a tamper-proof, blockchain-anchored land records system that integrates with existing state Bhu-Naksha and Dharani portals to prevent fraudulent mutations.",
     problemStatement:
-      "Land disputes account for 66% of all pending court cases in India. Fraudulent land mutations cost farmers â‚¹40,000 Cr annually. A blockchain-based immutable record system will prevent unauthorized changes and provide a transparent audit trail for all mutations.",
+      "Land disputes account for 66% of all pending court cases in India. Fraudulent land mutations cost farmers ₹40,000 Cr annually. A blockchain-based immutable record system will prevent unauthorized changes and provide a transparent audit trail for all mutations.",
     budget: 8_00_00_000,
     timeline: "18 months",
     targetKPIs: [
@@ -102,14 +102,14 @@ export const seedChallenges: Challenge[] = [
     description:
       "Deploy smart prepaid meters with AI-powered energy theft detection across rural feeders under the PM-KUSUM scheme, reducing AT&C losses below 12%.",
     problemStatement:
-      "AT&C losses in rural distribution stand at 32%, costing DISCOMs â‚¹1.2 lakh Cr annually. Manual meter reading is error-prone and expensive. Smart metering with AI anomaly detection will enable real-time loss identification and remote disconnection.",
+      "AT&C losses in rural distribution stand at 32%, costing DISCOMs ₹1.2 lakh Cr annually. Manual meter reading is error-prone and expensive. Smart metering with AI anomaly detection will enable real-time loss identification and remote disconnection.",
     budget: 12_00_00_000,
     timeline: "24 months",
     targetKPIs: [
       "AT&C loss reduction: from 32% to < 12%",
-      "Theft detection accuracy: â‰¥ 90%",
+      "Theft detection accuracy: ≥ 90%",
       "Remote meter reading coverage: 100%",
-      "Billing accuracy improvement: â‰¥ 98%",
+      "Billing accuracy improvement: ≥ 98%",
     ],
     domains: ["IoT", "AI/ML", "Energy Tech", "Rural Development"],
     status: "draft",
@@ -136,9 +136,9 @@ export const seedChallenges: Challenge[] = [
     budget: 4_00_00_000,
     timeline: "10 months",
     targetKPIs: [
-      "Prediction accuracy for weekly patient load: â‰¥ 85%",
+      "Prediction accuracy for weekly patient load: ≥ 85%",
       "Medicine stockout reduction: 70%",
-      "Bed occupancy optimization: â‰¥ 20% improvement",
+      "Bed occupancy optimization: ≥ 20% improvement",
       "Coverage: 200 district hospitals in Phase 1",
     ],
     domains: ["Health Tech", "AI/ML", "Data Analytics", "Government Tech"],
@@ -153,7 +153,7 @@ export const seedChallenges: Challenge[] = [
   },
 ];
 
-// â”€â”€ Seed Startups â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Seed Startups
 export const seedStartups: Startup[] = [
   {
     id: "st_001",
@@ -245,7 +245,7 @@ export const seedStartups: Startup[] = [
   },
 ];
 
-// â”€â”€ Seed Proposals â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Seed Proposals
 export const seedProposals: Proposal[] = [
   {
     id: "pr_001",
@@ -337,16 +337,21 @@ export const seedProposals: Proposal[] = [
   },
 ];
 
-// â”€â”€ Seed Evaluations â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Seed Evaluations
 export const seedEvaluations: Evaluation[] = [
   {
     id: "ev_001",
     proposalId: "pr_002",
     evaluatorId: "eval_001",
     challengeId: "ch_002",
-    technicalFeasibility: 36,
-    cybersecurityDataIsolation: 27,
-    costRealism: 25,
+    evaluationType: "tech" as const,
+    kpiAchievement: 9,
+    operationalEfficiency: 8,
+    scalabilityReplicability: 8,
+    costRealismROI: 8,
+    innovationNovelty: 9,
+    technologyReliability: 9,
+    sustainabilityGovernance: 8,
     totalScore: 88,
     comments:
       "Exceptionally strong proposal with proven multilingual NLP capabilities. DISHA compliance well-documented. Cost estimates are realistic given the scope. Minor concern: response time SLA needs more rigorous benchmarking on CPGRAMS production load.",
@@ -354,15 +359,23 @@ export const seedEvaluations: Evaluation[] = [
     qualifiedForSandbox: true,
     evaluatedAt: "2024-07-10T09:00:00Z",
     createdAt: "2024-07-08T14:00:00Z",
+    technicalFeasibility: 36,
+    cybersecurityDataIsolation: 27,
+    costRealism: 25,
   },
   {
     id: "ev_002",
     proposalId: "pr_003",
     evaluatorId: "eval_002",
     challengeId: "ch_003",
-    technicalFeasibility: 34,
-    cybersecurityDataIsolation: 26,
-    costRealism: 24,
+    evaluationType: "tech" as const,
+    kpiAchievement: 8,
+    operationalEfficiency: 7,
+    scalabilityReplicability: 9,
+    costRealismROI: 7,
+    innovationNovelty: 8,
+    technologyReliability: 8,
+    sustainabilityGovernance: 9,
     totalScore: 84,
     comments:
       "Solid blockchain architecture with appropriate use of Hyperledger Fabric. Integration plan with state portals is detailed. Security model for private key management needs strengthening. Recommend sandbox approval with condition on HSM deployment.",
@@ -370,15 +383,23 @@ export const seedEvaluations: Evaluation[] = [
     qualifiedForSandbox: true,
     evaluatedAt: "2024-05-20T15:00:00Z",
     createdAt: "2024-05-18T10:00:00Z",
+    technicalFeasibility: 34,
+    cybersecurityDataIsolation: 26,
+    costRealism: 24,
   },
   {
     id: "ev_003",
     proposalId: "pr_004",
     evaluatorId: "eval_001",
     challengeId: "ch_005",
-    technicalFeasibility: 30,
-    cybersecurityDataIsolation: 24,
-    costRealism: 26,
+    evaluationType: "low-tech" as const,
+    kpiAchievement: 8,
+    operationalEfficiency: 7,
+    scalabilityReplicability: 7,
+    costRealismROI: 9,
+    innovationNovelty: 6,
+    technologyReliability: 6,
+    sustainabilityGovernance: 7,
     totalScore: 80,
     comments:
       "Borderline qualified. ML approach is sound but TRL 5 introduces pilot risk. ABDM compliance is a strong positive. Cost is very competitive. Recommend close monitoring during sandbox phase with monthly KPI reviews.",
@@ -386,10 +407,13 @@ export const seedEvaluations: Evaluation[] = [
     qualifiedForSandbox: true,
     evaluatedAt: "2024-03-25T16:00:00Z",
     createdAt: "2024-03-22T09:00:00Z",
+    technicalFeasibility: 30,
+    cybersecurityDataIsolation: 24,
+    costRealism: 26,
   },
 ];
 
-// â”€â”€ Seed Pilots â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Seed Pilots
 export const seedPilots: Pilot[] = [
   {
     id: "pilot_001",
@@ -405,7 +429,7 @@ export const seedPilots: Pilot[] = [
     disbursedAmount: 1_10_00_000,
     overallProgress: 48,
     status: "active",
-    sandboxEnvironment: "NIC Cloud â€“ Dedicated Blockchain Sandbox VPC",
+    sandboxEnvironment: "NIC Cloud – Dedicated Blockchain Sandbox VPC",
     createdAt: "2024-05-25T09:00:00Z",
     milestones: [
       {
@@ -479,7 +503,7 @@ export const seedPilots: Pilot[] = [
     disbursedAmount: 75_00_000,
     overallProgress: 85,
     status: "active",
-    sandboxEnvironment: "AWS GovCloud â€“ Health Analytics Sandbox",
+    sandboxEnvironment: "AWS GovCloud – Health Analytics Sandbox",
     createdAt: "2024-04-10T09:00:00Z",
     milestones: [
       {
@@ -488,7 +512,7 @@ export const seedPilots: Pilot[] = [
         description: "HMIS data integration, historical data ingestion, and initial model training.",
         dueDate: "2024-05-31T00:00:00Z",
         completedDate: "2024-05-28T00:00:00Z",
-        trancheAmount: 25_00_000,
+        trancheAmount: 25_00_00_000,
         status: "payment_released",
         kpiMetrics: [
           { name: "Hospitals Integrated", target: 10, achieved: 10, unit: "hospitals" },
@@ -541,7 +565,7 @@ export const seedPilots: Pilot[] = [
   },
 ];
 
-// â”€â”€ Seed Procurement Items â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Seed Procurement Items
 export const seedProcurements: ProcurementItem[] = [
   {
     id: "proc_001",
@@ -558,7 +582,7 @@ export const seedProcurements: ProcurementItem[] = [
     replicableFor: [
       "Ministry of Tribal Affairs",
       "State Health Departments",
-      "Ayushman Bharat â€“ PMJAY",
+      "Ayushman Bharat – PMJAY",
       "NHM District Health Societies",
     ],
     description:
@@ -568,7 +592,7 @@ export const seedProcurements: ProcurementItem[] = [
   },
 ];
 
-// â”€â”€ Seed Changelog â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Seed Changelog
 export const seedChangelog: ChangelogEntry[] = [
   {
     id: "log_001",
@@ -588,7 +612,7 @@ export const seedChangelog: ChangelogEntry[] = [
     action: "CHALLENGE_PUBLISHED",
     entityType: "challenge",
     entityId: "ch_005",
-    details: "Challenge 'Predictive Health Analytics for District Hospital Resource Planning' published by Ministry of Health & Family Welfare. Budget: â‚¹4 Cr. Deadline: 31 March 2024.",
+    details: "Challenge 'Predictive Health Analytics for District Hospital Resource Planning' published by Ministry of Health & Family Welfare. Budget: ₹4 Cr. Deadline: 31 March 2024.",
   },
   {
     id: "log_003",
@@ -598,7 +622,7 @@ export const seedChangelog: ChangelogEntry[] = [
     action: "PROPOSAL_SUBMITTED",
     entityType: "proposal",
     entityId: "pr_004",
-    details: "Proposal submitted by HealthPredict Analytics (DPIIT245678) for Challenge ch_005. TRL Level: 5. Estimated Cost: â‚¹95L. Match Score: 79%.",
+    details: "Proposal submitted by HealthPredict Analytics (DPIIT245678) for Challenge ch_005. TRL Level: 5. Estimated Cost: ₹95L. Match Score: 79%.",
   },
   {
     id: "log_004",
@@ -618,7 +642,7 @@ export const seedChangelog: ChangelogEntry[] = [
     action: "PILOT_INITIATED",
     entityType: "pilot",
     entityId: "pilot_002",
-    details: "Sandbox Pilot initiated for HealthPredict Analytics. Total Budget: â‚¹95L. Duration: 6 months (Aprilâ€“October 2024). Environment: AWS GovCloud.",
+    details: "Sandbox Pilot initiated for HealthPredict Analytics. Total Budget: ₹95L. Duration: 6 months (April–October 2024). Environment: AWS GovCloud.",
   },
   {
     id: "log_006",
@@ -628,7 +652,7 @@ export const seedChangelog: ChangelogEntry[] = [
     action: "MILESTONE_PAYMENT_RELEASED",
     entityType: "pilot",
     entityId: "pilot_002",
-    details: "Tranche 1 payment of â‚¹25L released for Milestone 'Phase 1: Data Pipeline & Model Training'. All KPIs achieved: 10/10 hospitals integrated, 83.5% model accuracy.",
+    details: "Tranche 1 payment of ₹25L released for Milestone 'Phase 1: Data Pipeline & Model Training'. All KPIs achieved: 10/10 hospitals integrated, 83.5% model accuracy.",
   },
   {
     id: "log_007",
@@ -638,7 +662,7 @@ export const seedChangelog: ChangelogEntry[] = [
     action: "PILOT_INITIATED",
     entityType: "pilot",
     entityId: "pilot_001",
-    details: "Sandbox Pilot initiated for ChainGuard Systems (Blockchain Land Records). Budget: â‚¹2.8 Cr. Duration: 6 months.",
+    details: "Sandbox Pilot initiated for ChainGuard Systems (Blockchain Land Records). Budget: ₹2.8 Cr. Duration: 6 months.",
   },
   {
     id: "log_008",
@@ -648,16 +672,16 @@ export const seedChangelog: ChangelogEntry[] = [
     action: "MILESTONE_PAYMENT_RELEASED",
     entityType: "pilot",
     entityId: "pilot_001",
-    details: "Tranche 1 payment of â‚¹70L released for ChainGuard Systems. Phase 1 (Integration & Setup) completed ahead of schedule. All 8 blockchain nodes operational.",
+    details: "Tranche 1 payment of ₹70L released for ChainGuard Systems. Phase 1 (Integration & Setup) completed ahead of schedule. All 8 blockchain nodes operational.",
   },
   {
     id: "log_009",
     timestamp: "2024-10-01T09:00:00Z",
-    actor: "System â€“ Procurement Engine",
+    actor: "System – Procurement Engine",
     role: "admin",
     action: "SOLUTION_CERTIFIED_FOR_PROCUREMENT",
     entityType: "procurement",
     entityId: "proc_001",
-    details: "HealthPredict Analytics solution certified for cross-departmental procurement. Pilot Success Score: 87/100. KPI Achievement: 94%. Procurement Value: â‚¹8.5 Cr.",
+    details: "HealthPredict Analytics solution certified for cross-departmental procurement. Pilot Success Score: 87/100. KPI Achievement: 94%. Procurement Value: ₹8.5 Cr.",
   },
 ];
